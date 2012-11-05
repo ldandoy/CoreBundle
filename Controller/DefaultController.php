@@ -1,6 +1,6 @@
 <?php
 
-namespace startpack\CoreBundle\Controller;
+namespace StartPack\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

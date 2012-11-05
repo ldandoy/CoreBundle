@@ -1,6 +1,6 @@
 <?php
 
-namespace StartPack\CoreBundle\Tests\Controller;
+namespace startpack\CoreBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

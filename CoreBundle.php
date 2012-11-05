@@ -1,6 +1,6 @@
 <?php
 
-namespace startpack\CoreBundle;
+namespace StartPack\CoreBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
