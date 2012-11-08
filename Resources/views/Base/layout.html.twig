@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}StartPack{% endblock %}</title>
         <meta name="description" content="description de la page" />
         <meta name="keywords" content="keywords de la page" />
             
@@ -17,10 +17,11 @@
     <body>
         {% include 'FrontBundle:Base:header.html.twig' %}
         <div class="container">
-            {% block content %}{% endblock %}
+            <div id="wrapper">
+                {% block content %}{% endblock %}
+            </div>
+            {% include 'FrontBundle:Base:footer.html.twig' %}
         </div>
-        {% include 'FrontBundle:Base:footer.html.twig' %}
-            
         <script src="http://code.jquery.com/jquery-1.8.2.js" type="text/javascript"></script>
         <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js" type="text/javascript"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
