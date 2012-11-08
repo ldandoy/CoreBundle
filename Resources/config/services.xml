@@ -6,11 +6,19 @@
 
     <!--
     <parameters>
+<<<<<<< HEAD
         <parameter key="front.example.class">StartPack\FrontBundle\Example</parameter>
     </parameters>
 
     <services>
         <service id="front.example" class="%front.example.class%">
+=======
+        <parameter key="core.example.class">startpack\CoreBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="core.example" class="%core.example.class%">
+>>>>>>> 6d4e0cf813f45af83d5553f0a2067935f11eb189
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>
