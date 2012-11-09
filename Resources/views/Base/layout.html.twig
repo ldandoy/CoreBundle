@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}StartPack{% endblock %}</title>
+        <meta name="description" content="description de la page" />
+        <meta name="keywords" content="keywords de la page" />
+            
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome-ie7.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('bundles/front/css/style.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('bundles/front/css/utils.css') }}" type="text/css" />
+        {% block css %}{% endblock %}
+    </head>
+    
+    <body>
+        {% include 'FrontBundle:Base:header.html.twig' %}
+        <div class="container">
+            <div id="wrapper">
+                {% block content %}{% endblock %}
+            </div>
+            {% include 'FrontBundle:Base:footer.html.twig' %}
+        </div>
+        <script src="http://code.jquery.com/jquery-1.8.2.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js" type="text/javascript"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+        {% block js %}{% endblock %}
+    </body>
+</html>

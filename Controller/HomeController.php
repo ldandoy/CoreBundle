@@ -1,23 +1,19 @@
 <?php
 
-<<<<<<< HEAD
 namespace StartPack\FrontBundle\Controller;
-=======
-namespace StartPack\CoreBundle\Controller;
->>>>>>> 6d4e0cf813f45af83d5553f0a2067935f11eb189
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class DefaultController extends Controller
+class HomeController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/", name="home")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        return array();
     }
 }
