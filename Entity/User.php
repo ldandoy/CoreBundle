@@ -6,14 +6,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * StartPack\CoreBundle\Entity\Admin
+ * StartPack\CoreBundle\Entity\User
  *
- * @ORM\Table(name="admin")
+ * @ORM\Table(name="user")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity
  */
-class Admin implements UserInterface
+class User implements UserInterface
 {
     /**
      * @var integer $id
@@ -34,21 +35,21 @@ class Admin implements UserInterface
     /**
      * @var string $password
      *
-     * @ORM\Column(name="password", type="string", length=20, nullable=false)
+     * @ORM\Column(name="password", type="string", length=256, nullable=false)
      */
     private $password;
 
     /**
      * @var string $role
      *
-     * @ORM\Column(name="role", type="string", length=20, nullable=false)
+     * @ORM\Column(name="role", type="string", length=128, nullable=false)
      */
     private $role;
 
     /**
      * @var string $salt
      *
-     * @ORM\Column(name="salt", type="string", length=20, nullable=false)
+     * @ORM\Column(name="salt", type="string", length=64, nullable=false)
      */
     private $salt;
 
@@ -82,7 +83,7 @@ class Admin implements UserInterface
      * Set email
      *
      * @param string $email
-     * @return Admin
+     * @return User
      */
     public function setEmail($email)
     {
@@ -105,7 +106,7 @@ class Admin implements UserInterface
      * Set password
      *
      * @param string $password
-     * @return Admin
+     * @return User
      */
     public function setPassword($password)
     {
@@ -128,7 +129,7 @@ class Admin implements UserInterface
      * Set role
      *
      * @param string $role
-     * @return Admin
+     * @return User
      */
     public function setRole($role)
     {
@@ -151,7 +152,7 @@ class Admin implements UserInterface
      * Set salt
      *
      * @param string $salt
-     * @return Admin
+     * @return User
      */
     public function setSalt($salt)
     {
@@ -174,7 +175,7 @@ class Admin implements UserInterface
      * Set createdAt
      *
      * @param integer $createdAt
-     * @return Admin
+     * @return User
      */
     public function setCreatedAt($createdAt)
     {
@@ -197,7 +198,7 @@ class Admin implements UserInterface
      * Set updatedAt
      *
      * @param integer $updatedAt
-     * @return Admin
+     * @return User
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -215,7 +216,6 @@ class Admin implements UserInterface
     {
         return $this->updatedAt;
     }
-
 
 
     /**
