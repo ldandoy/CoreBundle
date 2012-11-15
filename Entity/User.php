@@ -68,13 +68,9 @@ class User implements UserInterface
     private $updatedAt;
 
     /**
-     * @var UserInfo
-     *
-     * @ORM\OneToOne(targetEntity="UserInfo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="user")
-     * })
-     */
+    * @ORM\OneToOne(targetEntity="UserInfo")
+    * @ORM\JoinColumn(name="id", referencedColumnName="id")
+    */
     private $userInfo;
 
     /**

@@ -62,19 +62,8 @@ class UserInfo
      * @ORM\Column(name="optin", type="boolean", nullable=false)
      */
     private $optin;
-
-    /**
-     * @var User
-     *
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
-     */
-    private $user;
-
-
-
+    
+    
     /**
      * Get id
      *
