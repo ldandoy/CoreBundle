@@ -1,0 +1,77 @@
+<?php
+
+namespace StartPack\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * StartPack\CoreBundle\Entity\UserInfo
+ *
+ * @ORM\Table(name="user_info")
+ * @ORM\Entity
+ */
+class UserInfo
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $lastName
+     *
+     * @ORM\Column(name="last_name", type="string", length=250, nullable=false)
+     */
+    private $lastName;
+
+    /**
+     * @var string $firstName
+     *
+     * @ORM\Column(name="first_name", type="string", length=250, nullable=false)
+     */
+    private $firstName;
+
+    /**
+     * @var string $address
+     *
+     * @ORM\Column(name="address", type="string", length=250, nullable=false)
+     */
+    private $address;
+
+    /**
+     * @var string $cp
+     *
+     * @ORM\Column(name="cp", type="string", length=5, nullable=false)
+     */
+    private $cp;
+
+    /**
+     * @var string $ville
+     *
+     * @ORM\Column(name="ville", type="string", length=100, nullable=false)
+     */
+    private $ville;
+
+    /**
+     * @var boolean $optin
+     *
+     * @ORM\Column(name="optin", type="boolean", nullable=false)
+     */
+    private $optin;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}

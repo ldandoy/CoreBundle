@@ -67,7 +67,15 @@ class User implements UserInterface
      */
     private $updatedAt;
 
-
+    /**
+     * @var UserInfo
+     *
+     * @ORM\OneToOne(targetEntity="UserInfo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id", referencedColumnName="user")
+     * })
+     */
+    private $userInfo;
 
     /**
      * Get id
@@ -317,5 +325,26 @@ class User implements UserInterface
             $this->salt,
             $this->email,
         ) = unserialize($serialized);
+    }
+    
+    /**
+     * Set user
+     *
+     * @param StartPack\CoreBundle\Entity\UserInfo $user
+     * @return UserInfo
+     */
+    public function setUserInfo(\StartPack\CoreBundle\Entity\UserInfo $userInfo = null)
+    {
+        $this->userInfo = $userInfo;
+    }
+
+    /**
+     * Get user
+     *
+     * @return StartPack\CoreBundle\Entity\UserInfo
+     */
+    public function getUserInfo()
+    {
+        return $this->userInfo;
     }
 }
