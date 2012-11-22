@@ -1,0 +1,46 @@
+<?php
+
+namespace StartPack\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * StartPack\CoreBundle\Entity\Config
+ *
+ * @ORM\Table(name="config")
+ * @ORM\Entity
+ */
+class Config
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $key
+     *
+     * @ORM\Column(name="key", type="string", length=50, nullable=false)
+     */
+    private $key;
+
+    /**
+     * @var string $value
+     *
+     * @ORM\Column(name="value", type="text", nullable=false)
+     */
+    private $value;
+
+    /**
+     * @var string $label
+     *
+     * @ORM\Column(name="label", type="string", length=255, nullable=false)
+     */
+    private $label;
+
+
+}
