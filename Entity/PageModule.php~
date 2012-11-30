@@ -1,0 +1,59 @@
+<?php
+
+namespace StartPack\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * StartPack\CoreBundle\Entity\PageModule
+ *
+ * @ORM\Table(name="page_module")
+ * @ORM\Entity
+ */
+class PageModule
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer $colonneId
+     *
+     * @ORM\Column(name="colonne_id", type="integer", nullable=false)
+     */
+    private $colonneId;
+
+    /**
+     * @var integer $ordre
+     *
+     * @ORM\Column(name="ordre", type="integer", nullable=false)
+     */
+    private $ordre;
+
+    /**
+     * @var Page
+     *
+     * @ORM\ManyToOne(targetEntity="Page")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="page", referencedColumnName="id")
+     * })
+     */
+    private $page;
+
+    /**
+     * @var Module
+     *
+     * @ORM\ManyToOne(targetEntity="Module")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="module", referencedColumnName="id")
+     * })
+     */
+    private $module;
+
+
+}

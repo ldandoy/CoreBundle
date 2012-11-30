@@ -6,15 +6,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * StartPack\CoreBundle\Entity\User
+ * StartPack\CoreBundle\Entity\Admin
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="admin")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity
  */
-class User implements UserInterface
+class Admin implements UserInterface
 {
     /**
      * @var integer $id
@@ -35,21 +34,21 @@ class User implements UserInterface
     /**
      * @var string $password
      *
-     * @ORM\Column(name="password", type="string", length=256, nullable=false)
+     * @ORM\Column(name="password", type="string", length=20, nullable=false)
      */
     private $password;
 
     /**
      * @var string $role
      *
-     * @ORM\Column(name="role", type="string", length=128, nullable=false)
+     * @ORM\Column(name="role", type="string", length=20, nullable=false)
      */
     private $role;
 
     /**
      * @var string $salt
      *
-     * @ORM\Column(name="salt", type="string", length=64, nullable=false)
+     * @ORM\Column(name="salt", type="string", length=20, nullable=false)
      */
     private $salt;
 
@@ -67,11 +66,7 @@ class User implements UserInterface
      */
     private $updatedAt;
 
-    /**
-    * @ORM\OneToOne(targetEntity="UserInfo")
-    * @ORM\JoinColumn(name="id", referencedColumnName="id")
-    */
-    private $userInfo;
+
 
     /**
      * Get id
@@ -87,7 +82,7 @@ class User implements UserInterface
      * Set email
      *
      * @param string $email
-     * @return User
+     * @return Admin
      */
     public function setEmail($email)
     {
@@ -110,7 +105,7 @@ class User implements UserInterface
      * Set password
      *
      * @param string $password
-     * @return User
+     * @return Admin
      */
     public function setPassword($password)
     {
@@ -133,7 +128,7 @@ class User implements UserInterface
      * Set role
      *
      * @param string $role
-     * @return User
+     * @return Admin
      */
     public function setRole($role)
     {
@@ -156,7 +151,7 @@ class User implements UserInterface
      * Set salt
      *
      * @param string $salt
-     * @return User
+     * @return Admin
      */
     public function setSalt($salt)
     {
@@ -179,7 +174,7 @@ class User implements UserInterface
      * Set createdAt
      *
      * @param integer $createdAt
-     * @return User
+     * @return Admin
      */
     public function setCreatedAt($createdAt)
     {
@@ -202,7 +197,7 @@ class User implements UserInterface
      * Set updatedAt
      *
      * @param integer $updatedAt
-     * @return User
+     * @return Admin
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -220,6 +215,7 @@ class User implements UserInterface
     {
         return $this->updatedAt;
     }
+
 
 
     /**
@@ -321,26 +317,5 @@ class User implements UserInterface
             $this->salt,
             $this->email,
         ) = unserialize($serialized);
-    }
-    
-    /**
-     * Set user
-     *
-     * @param StartPack\CoreBundle\Entity\UserInfo $user
-     * @return UserInfo
-     */
-    public function setUserInfo(\StartPack\CoreBundle\Entity\UserInfo $userInfo = null)
-    {
-        $this->userInfo = $userInfo;
-    }
-
-    /**
-     * Get user
-     *
-     * @return StartPack\CoreBundle\Entity\UserInfo
-     */
-    public function getUserInfo()
-    {
-        return $this->userInfo;
     }
 }

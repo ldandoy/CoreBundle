@@ -1,0 +1,49 @@
+<?php
+
+namespace StartPack\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * StartPack\CoreBundle\Entity\PageModuleContent
+ *
+ * @ORM\Table(name="page_module_content")
+ * @ORM\Entity
+ */
+class PageModuleContent
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $libelle
+     *
+     * @ORM\Column(name="libelle", type="string", length=255, nullable=false)
+     */
+    private $libelle;
+
+    /**
+     * @var string $valeur
+     *
+     * @ORM\Column(name="valeur", type="text", nullable=false)
+     */
+    private $valeur;
+
+    /**
+     * @var PageModule
+     *
+     * @ORM\ManyToOne(targetEntity="PageModule")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="page_module", referencedColumnName="id")
+     * })
+     */
+    private $pageModule;
+
+
+}
