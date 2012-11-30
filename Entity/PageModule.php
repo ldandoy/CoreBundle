@@ -55,13 +55,6 @@ class PageModule
      */
     private $module;
 
-    /**
-     * @var array $pageModuleContents
-     *
-     * @ORM\OneToMany(targetEntity="PageModuleContent", mappedBy="pageModule")
-     */
-    private $pageModuleContents;
-
 
 
     /**
@@ -84,7 +77,7 @@ class PageModule
     {
         $this->colonneId = $colonneId;
     
-        return $this->colonneId;
+        return $this;
     }
 
     /**
@@ -107,7 +100,7 @@ class PageModule
     {
         $this->ordre = $ordre;
     
-        return $this->ordre;
+        return $this;
     }
 
     /**
@@ -164,28 +157,5 @@ class PageModule
     public function getModule()
     {
         return $this->module;
-    }
-
-    /**
-     * Set pageModuleContents
-     *
-     * @param integer $pageModuleContents
-     * @return pageModuleContents
-     */
-    public function setPageModuleContents($pageModuleContents)
-    {
-        $this->pageModuleContents = $pageModuleContents;
-    
-        return $this->pageModuleContents;
-    }
-
-    /**
-     * Get pageModuleContents
-     *
-     * @return integer 
-     */
-    public function getPageModuleContents()
-    {
-        return $this->pageModuleContents;
     }
 }

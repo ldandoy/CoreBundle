@@ -42,13 +42,6 @@ class Page
      */
     private $content;
 
-    /**
-     * @var array $pageModules
-     *
-     * @ORM\OneToMany(targetEntity="PageModule", mappedBy="page")
-     */
-    private $pageModules;
-
 
 
     /**
@@ -128,28 +121,5 @@ class Page
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set pageModules
-     *
-     * @param string $pageModules
-     * @return pageModules
-     */
-    public function setPageModules($pageModules)
-    {
-        $this->pageModules = $pageModules;
-    
-        return $this->pageModules;
-    }
-
-    /**
-     * Get pageModules
-     *
-     * @return string 
-     */
-    public function getPageModules()
-    {
-        return $this->pageModules;
     }
 }
