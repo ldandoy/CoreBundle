@@ -3,6 +3,7 @@
 namespace StartPack\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * StartPack\CoreBundle\Entity\PageModule
@@ -55,6 +56,19 @@ class PageModule
      */
     private $module;
 
+    /**
+     * @var pageModuleContents
+     *
+     * @ORM\OneToMany(targetEntity="PageModuleContent", mappedBy="pageModule")
+     * 
+     */
+    private $pageModuleContents;
+
+
+    public function __construct()
+    {
+        $this->pageModuleContents = new ArrayCollection();
+    }
 
 
     /**
@@ -114,29 +128,6 @@ class PageModule
     }
 
     /**
-     * Set page
-     *
-     * @param StartPack\CoreBundle\Entity\Page $page
-     * @return PageModule
-     */
-    public function setPage(\StartPack\CoreBundle\Entity\Page $page = null)
-    {
-        $this->page = $page;
-    
-        return $this;
-    }
-
-    /**
-     * Get page
-     *
-     * @return StartPack\CoreBundle\Entity\Page 
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
      * Set module
      *
      * @param StartPack\CoreBundle\Entity\Module $module
@@ -157,5 +148,28 @@ class PageModule
     public function getModule()
     {
         return $this->module;
+    }
+
+    /**
+     * Set pageModuleContents
+     *
+     * @param string $pageModuleContents
+     * @return Page
+     */
+    public function setPageModules($pageModuleContents)
+    {
+        $this->pageModuleContents = $pageModuleContents;
+    
+        return $this;
+    }
+
+    /**
+     * Get pageModuleContents
+     *
+     * @return string 
+     */
+    public function getPageModuleContents()
+    {
+        return $this->pageModuleContents;
     }
 }

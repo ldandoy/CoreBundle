@@ -3,6 +3,7 @@
 namespace StartPack\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * StartPack\CoreBundle\Entity\Page
@@ -41,6 +42,22 @@ class Page
      * @ORM\Column(name="content", type="text", nullable=false)
      */
     private $content;
+
+    /**
+     * @var pageModules
+     *
+     * @ORM\OneToMany(targetEntity="PageModule", mappedBy="page")
+     * 
+     */
+    private $pageModules;
+
+
+
+
+    public function __construct()
+    {
+        $this->pageModules = new ArrayCollection();
+    }
 
 
 
@@ -121,5 +138,28 @@ class Page
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set pageModules
+     *
+     * @param string $pageModules
+     * @return Page
+     */
+    public function setPageModules($pageModules)
+    {
+        $this->pageModules = $pageModules;
+    
+        return $this;
+    }
+
+    /**
+     * Get pageModules
+     *
+     * @return string 
+     */
+    public function getPageModules()
+    {
+        return $this->pageModules;
     }
 }
