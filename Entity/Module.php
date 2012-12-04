@@ -28,6 +28,13 @@ class Module
      */
     private $nom;
 
+    /**
+     * @var string $template
+     *
+     * @ORM\Column(name="template", type="string", length=30, nullable=false)
+     */
+    private $template;
+
 
 
     /**
@@ -61,5 +68,28 @@ class Module
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set template
+     *
+     * @param string $template
+     * @return Module
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+    
+        return $template;
+    }
+
+    /**
+     * Get template
+     *
+     * @return string 
+     */
+    public function getTemplate()
+    {
+        return $this->template;
     }
 }

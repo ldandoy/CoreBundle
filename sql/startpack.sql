@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 03 Décembre 2012 à 13:59
+-- Généré le: Mar 04 Décembre 2012 à 14:00
 -- Version du serveur: 5.5.28
 -- Version de PHP: 5.4.6-1ubuntu1.1
 
@@ -69,15 +69,17 @@ INSERT INTO `config` (`id`, `key`, `value`, `label`) VALUES
 CREATE TABLE IF NOT EXISTS `module` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
+  `template` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `module`
 --
 
-INSERT INTO `module` (`id`, `nom`) VALUES
-(1, 'text');
+INSERT INTO `module` (`id`, `nom`, `template`) VALUES
+(1, 'Text', 'text'),
+(2, 'Text + image', 'text-image');
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `page_module` (
 
 INSERT INTO `page_module` (`id`, `page`, `colonne_id`, `ordre`, `module`) VALUES
 (1, 1, 1, 0, 1),
-(2, 1, 2, 0, 1),
+(2, 1, 2, 0, 2),
 (3, 1, 2, 0, 1);
 
 -- --------------------------------------------------------
@@ -139,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `page_module_content` (
   `page_module` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_module_id` (`page_module`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `page_module_content`
@@ -148,7 +150,8 @@ CREATE TABLE IF NOT EXISTS `page_module_content` (
 INSERT INTO `page_module_content` (`id`, `libelle`, `valeur`, `page_module`) VALUES
 (1, 'text', 'Content de la page', 1),
 (2, 'text', 'text de test', 2),
-(3, 'text', 'test ici', 3);
+(3, 'text', 'test ici', 3),
+(5, 'image', 'http://wallpaper.metalship.org/walls/luis-royo34.jpg', 2);
 
 -- --------------------------------------------------------
 
