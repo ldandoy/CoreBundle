@@ -73,6 +73,12 @@ class User implements UserInterface
     */
     private $userInfo;
 
+    private $plainPassword;
+    
+    public function __construct(){
+        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+    }
+    
     /**
      * Get id
      *
@@ -82,7 +88,7 @@ class User implements UserInterface
     {
         return $this->id;
     }
-
+        
     /**
      * Set email
      *
