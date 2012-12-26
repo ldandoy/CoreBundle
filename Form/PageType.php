@@ -13,7 +13,6 @@ class PageType extends AbstractType
         $builder
             ->add('name')
             ->add('slug')
-            ->add('content')
         ;
     }
 

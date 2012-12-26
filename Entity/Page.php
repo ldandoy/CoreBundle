@@ -37,13 +37,6 @@ class Page
     private $slug;
 
     /**
-     * @var string $content
-     *
-     * @ORM\Column(name="content", type="text", nullable=false)
-     */
-    private $content;
-
-    /**
      * @var pageModules
      *
      * @ORM\OneToMany(targetEntity="PageModule", mappedBy="page")
@@ -115,29 +108,6 @@ class Page
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Page
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-    
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
-    {
-        return $this->content;
     }
 
     /**
