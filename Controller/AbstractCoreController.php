@@ -70,9 +70,7 @@ abstract class AbstractCoreController extends Controller {
         return $this->get('security.context')->getToken()->getUser();
     }
 
-    public function getNbProduct(){
-        $session = $this->getRequest()->getSession();
-        $produits = $session->get('produits');
-        return count($produits);
+    public function getConfig() {
+        return $this->getRepository('CoreBundle:Config')->getConfig();
     }
 }
