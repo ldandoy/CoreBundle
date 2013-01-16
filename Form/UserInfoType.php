@@ -11,19 +11,26 @@ class UserInfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastName','text',
-                Array('label' => 'Prénom')
-            )
-            ->add('firstName','text',
-                Array('label' => 'Nom')
-            )
-            ->add('address','textarea',
-                Array('label' => 'Adresse')
-            )
-            ->add('cp','text',
-                Array('label' => 'Code Postal')
-            )
-            ->add('ville')
+            ->add('lastName','text', Array(
+            	'label' => 'Nom',
+            	'required' => true
+			))
+            ->add('firstName','text', Array(
+            	'label' => 'Prénom',
+            	'required' => true
+			))
+            ->add('address','textarea', Array(
+            	'label' => 'Adresse',
+            	'required' => false
+			))
+            ->add('cp','text', Array(
+            	'label' => 'Code Postal',
+            	'required' => false
+			))
+            ->add('ville', 'text', Array(
+            	'label' => 'Code Postal',
+            	'required' => false
+			))
             ->add('optin','checkbox',Array(
                 'label' => 'Newsletter',
                 'required' => false

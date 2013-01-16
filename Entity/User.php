@@ -66,12 +66,12 @@ class User implements UserInterface
      * @ORM\Column(name="updated_at", type="integer", nullable=false)
      */
     private $updatedAt;
-
-    /**
-    * @ORM\OneToOne(targetEntity="UserInfo")
-    * @ORM\JoinColumn(name="id", referencedColumnName="id")
-    */
-    private $userInfo;
+	
+	/**
+	 * @ORM\OneToOne(targetEntity="UserInfo", cascade={"persist", "merge", "remove"})
+	 * @ORM\JoinColumn(name="user_info_id", referencedColumnName="id")
+	 */
+	private $userInfo;
 
     private $plainPassword;
     
@@ -170,6 +170,22 @@ class User implements UserInterface
     
         return $this;
     }
+	
+	/**
+	 * @param StartPack\CoreBundle\Entity\UserInfo $userInfo
+	 */
+	public function setUserInfo(StartPack\CoreBundle\Entity\UserInfo $userInfo)
+	{
+		$this->userInfo = $userInfo;
+	}
+	 
+	/**
+	* @return StartPack\CoreBundle\Entity\UserInfo
+	*/
+	public function getUserInfo()
+	{
+		return $this->userInfo;
+	}
 
     /**
      * Get salt
@@ -226,7 +242,6 @@ class User implements UserInterface
     {
         return $this->updatedAt;
     }
-
 
     /**
      * Set plainPassword
@@ -327,26 +342,5 @@ class User implements UserInterface
             $this->salt,
             $this->email,
         ) = unserialize($serialized);
-    }
-    
-    /**
-     * Set user
-     *
-     * @param StartPack\CoreBundle\Entity\UserInfo $user
-     * @return UserInfo
-     */
-    public function setUserInfo(\StartPack\CoreBundle\Entity\UserInfo $userInfo = null)
-    {
-        $this->userInfo = $userInfo;
-    }
-
-    /**
-     * Get user
-     *
-     * @return StartPack\CoreBundle\Entity\UserInfo
-     */
-    public function getUserInfo()
-    {
-        return $this->userInfo;
     }
 }
