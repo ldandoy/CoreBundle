@@ -3,6 +3,8 @@
 namespace StartPack\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * StartPack\CoreBundle\Entity\UserInfo
@@ -25,6 +27,9 @@ class UserInfo
      * @var string $lastName
      *
      * @ORM\Column(name="last_name", type="string", length=250, nullable=false)
+	 * @Assert\NotBlank(message="Vous devez entrer un mot de passe.")
+	 * @Assert\NotNull(message="Vous devez entrer un mot de passe.")
+	 * @Assert\MaxLength(limit=250, message="Votre email doit avoir moins de {{ limit }} caractères.")
      */
     private $lastName;
 
@@ -32,27 +37,33 @@ class UserInfo
      * @var string $firstName
      *
      * @ORM\Column(name="first_name", type="string", length=250, nullable=false)
+	 * @Assert\NotBlank(message="Vous devez entrer un mot de passe.")
+	 * @Assert\NotNull(message="Vous devez entrer un mot de passe.")
+	 * @Assert\MaxLength(limit=250, message="Votre email doit avoir moins de {{ limit }} caractères.")
      */
     private $firstName;
 
     /**
      * @var string $address
      *
-     * @ORM\Column(name="address", type="string", length=250, nullable=false)
+     * @ORM\Column(name="address", type="string", length=250, nullable=true)
+	 * @Assert\MaxLength(limit=250, message="Votre email doit avoir moins de {{ limit }} caractères.")
      */
     private $address;
 
     /**
      * @var string $cp
      *
-     * @ORM\Column(name="cp", type="string", length=5, nullable=false)
+     * @ORM\Column(name="cp", type="string", length=5, nullable=true)
+	 * @Assert\Regex(pattern="/^[0-9]{5}$/", message="Votre code postal n'est pas valide.")
      */
     private $cp;
 
     /**
      * @var string $ville
      *
-     * @ORM\Column(name="ville", type="string", length=100, nullable=false)
+     * @ORM\Column(name="ville", type="string", length=100, nullable=true)
+	 * @Assert\MaxLength(limit=100, message="Votre ville doit avoir moins de {{ limit }} caractères.")
      */
     private $ville;
 
@@ -63,6 +74,11 @@ class UserInfo
      */
     private $optin;
     
+    /**
+     * @ORM\OneToOne(targetEntity="User", inversedBy="userInfo", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
     
     /**
      * Get id

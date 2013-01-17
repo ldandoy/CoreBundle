@@ -4,17 +4,20 @@ namespace StartPack\CoreBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * StartPack\CoreBundle\Entity\User
  *
  * @ORM\Table(name="user")
+ * @UniqueEntity("email")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @var integer $id
@@ -29,6 +32,9 @@ class User implements UserInterface
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=100, nullable=false)
+	 * @Assert\NotBlank(message="Vous devez entrer un email.")
+	 * @Assert\MaxLength(limit=100, message="Votre email doit avoir moins de {{ limit }} caractères.")
+	 * @Assert\Email(message="Votre email n'est pas valide.")
      */
     private $email;
 
@@ -36,6 +42,10 @@ class User implements UserInterface
      * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=256, nullable=false)
+	 * @Assert\NotBlank(message="Vous devez entrer un mot de passe.")
+	 * @Assert\NotNull(message="Vous devez entrer un mot de passe.")
+	 * @Assert\MinLength(limit=6, message="Votre mot de passe doit avoir plus de {{ limit }} caractères.")
+	 * @Assert\MaxLength(limit=16, message="Votre mot de passe doit avoir moins de {{ limit }} caractères.")
      */
     private $password;
 
@@ -67,10 +77,9 @@ class User implements UserInterface
      */
     private $updatedAt;
 	
-	/**
-	 * @ORM\OneToOne(targetEntity="UserInfo", cascade={"persist", "merge", "remove"})
-	 * @ORM\JoinColumn(name="user_info_id", referencedColumnName="id")
-	 */
+    /**
+     * @ORM\OneToOne(targetEntity="UserInfo", mappedBy="user", cascade={"persist", "remove"})
+     */
 	private $userInfo;
 
     private $plainPassword;
@@ -174,7 +183,7 @@ class User implements UserInterface
 	/**
 	 * @param StartPack\CoreBundle\Entity\UserInfo $userInfo
 	 */
-	public function setUserInfo(StartPack\CoreBundle\Entity\UserInfo $userInfo)
+	public function setUserInfo($userInfo)
 	{
 		$this->userInfo = $userInfo;
 	}

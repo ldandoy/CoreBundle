@@ -11,6 +11,9 @@ class UserInfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('user' , new UserType(), Array (
+				'label' => ' '
+			))
             ->add('lastName','text', Array(
             	'label' => 'Nom',
             	'required' => true
@@ -23,11 +26,11 @@ class UserInfoType extends AbstractType
             	'label' => 'Adresse',
             	'required' => false
 			))
-            ->add('cp','text', Array(
-            	'label' => 'Code Postal',
+			->add('ville', 'text', Array(
+            	'label' => 'Ville',
             	'required' => false
 			))
-            ->add('ville', 'text', Array(
+            ->add('cp','text', Array(
             	'label' => 'Code Postal',
             	'required' => false
 			))
@@ -41,7 +44,8 @@ class UserInfoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'StartPack\CoreBundle\Entity\UserInfo'
+            'data_class' 			=> 'StartPack\CoreBundle\Entity\UserInfo',
+            'cascade_validation' 	=> true
         ));
     }
 
