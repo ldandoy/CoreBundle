@@ -6,51 +6,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserInfoType extends AbstractType
-{
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('user' , new UserType(), Array (
-				'label' => ' '
-			))
-            ->add('lastName','text', Array(
-            	'label' => 'Nom',
-            	'required' => true
-			))
-            ->add('firstName','text', Array(
-            	'label' => 'Prénom',
-            	'required' => true
-			))
-            ->add('address','textarea', Array(
-            	'label' => 'Adresse',
-            	'required' => false
-			))
-			->add('ville', 'text', Array(
-            	'label' => 'Ville',
-            	'required' => false
-			))
-            ->add('cp','text', Array(
-            	'label' => 'Code Postal',
-            	'required' => false
-			))
-            ->add('optin','checkbox',Array(
-                'label' => 'Newsletter',
-                'required' => false
-            ))
-        ;
-    }
+class UserInfoType extends AbstractType {
+	public function buildForm(FormBuilderInterface $builder, array $options) {
+		$builder->add('user', new UserType(), Array('label' => ' '))->add('lastName', 'text', Array('label' => 'Nom', 'required' => true))->add('firstName', 'text', Array('label' => 'Prénom', 'required' => true))
+				->add('address', 'textarea', Array('label' => 'Adresse', 'required' => false))->add('ville', 'text', Array('label' => 'Ville', 'required' => false))->add('cp', 'text', Array('label' => 'Code Postal', 'required' => false))
+				->add('optin', 'checkbox', Array('label' => 'Newsletter', 'required' => false));
+	}
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' 			=> 'StartPack\CoreBundle\Entity\UserInfo',
-            'cascade_validation' 	=> true
-        ));
-    }
+	public function setDefaultOptions(OptionsResolverInterface $resolver) {
+		$resolver->setDefaults(array('data_class' => 'StartPack\CoreBundle\Entity\UserInfo', 'cascade_validation' => true));
+	}
 
-    public function getName()
-    {
-        return 'startpack_corebundle_userinfotype';
-    }
+	public function getName() {
+		return 'startpack_corebundle_userinfotype';
+	}
 }

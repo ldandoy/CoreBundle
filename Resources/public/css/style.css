@@ -5,6 +5,10 @@
     Description:
         Purpose of the stylesheet follows.
 */
+#wrapper {
+	margin-top: 80px;
+}
 
-#wrapper{margin-top:80px;}
-footer{margin-top: 30px;}
+footer {
+	margin-top: 30px;
+}
