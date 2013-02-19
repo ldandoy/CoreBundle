@@ -6,9 +6,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ConfigType extends AbstractType {
+class ConfigLineType extends AbstractType {
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-		$builder->add('key')->add('value')->add('label');
+		$builder
+			->add('key', 'hidden')
+			->add('value')
+			->add('label')
+		;
 	}
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver) {
@@ -16,6 +20,6 @@ class ConfigType extends AbstractType {
 	}
 
 	public function getName() {
-		return 'startpack_corebundle_configtype';
+		return 'startpack_corebundle_configlinetype';
 	}
 }
