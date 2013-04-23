@@ -21,11 +21,11 @@ class Config {
 	private $id;
 
 	/**
-	 * @var string $key
+	 * @var string $slug
 	 *
-	 * @ORM\Column(name="key", type="string", length=50, nullable=false)
+	 * @ORM\Column(name="slug", type="string", length=50, nullable=false)
 	 */
-	private $key;
+	private $slug;
 
 	/**
 	 * @var string $value
@@ -51,24 +51,24 @@ class Config {
 	}
 
 	/**
-	 * Set key
+	 * Set slug
 	 *
-	 * @param string $key
+	 * @param string $slug
 	 * @return Config
 	 */
-	public function setKey($key) {
-		$this->key = $key;
+	public function setSlug($slug) {
+		$this->slug = $slug;
 
 		return $this;
 	}
 
 	/**
-	 * Get key
+	 * Get slug
 	 *
 	 * @return string 
 	 */
-	public function getKey() {
-		return $this->key;
+	public function getSlug() {
+		return $this->slug;
 	}
 
 	/**

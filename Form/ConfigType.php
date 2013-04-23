@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ConfigType extends AbstractType {
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-		$builder->add('key')->add('value')->add('label');
+		$builder->add('slug')->add('value')->add('label');
 	}
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver) {

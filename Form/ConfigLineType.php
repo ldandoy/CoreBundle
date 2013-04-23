@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ConfigLineType extends AbstractType {
 	public function buildForm(FormBuilderInterface $builder, array $options) {
 		$builder
-			->add('key', 'hidden')
+			->add('slug', 'hidden')
 			->add('value')
 			->add('label')
 		;

@@ -13,11 +13,11 @@ use Doctrine\ORM\EntityRepository;
 class ConfigRepository extends EntityRepository {
 
 	public function getConfig() {
-		$q = $this->createQueryBuilder('c')->select('c.key, c.value');
+		$q = $this->createQueryBuilder('c')->select('c.slug, c.value');
 		$req = $q->getQuery();
 		$rows = $req->execute();
-		foreach ($rows as $key => $value) {
-			$tabConfig[$value['key']] = $value['value'];
+		foreach ($rows as $slug => $value) {
+			$tabConfig[$value['slug']] = $value['value'];
 		}
 		return $tabConfig;
 	}
