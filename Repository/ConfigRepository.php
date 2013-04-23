@@ -16,7 +16,7 @@ class ConfigRepository extends EntityRepository {
 		$q = $this->createQueryBuilder('c')->select('c.slug, c.value');
 		$req = $q->getQuery();
 		$rows = $req->execute();
-		foreach ($rows as $slug => $value) {
+		foreach ($rows as $value) {
 			$tabConfig[$value['slug']] = $value['value'];
 		}
 		return $tabConfig;
