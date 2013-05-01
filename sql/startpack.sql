@@ -1,17 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.11.1deb1
+-- version 4.0.0-alpha2
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 10 Décembre 2012 à 14:27
--- Version du serveur: 5.5.28
--- Version de PHP: 5.4.6-1ubuntu1.1
+-- Généré le: Mar 19 Février 2013 à 13:41
+-- Version du serveur: 5.1.66-0+squeeze1
+-- Version de PHP: 5.3.3-7+squeeze14
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Base de données: `startpack`
+-- Base de données: `templedugo`
 --
 
 -- --------------------------------------------------------
@@ -50,15 +50,32 @@ CREATE TABLE IF NOT EXISTS `config` (
   `value` text NOT NULL,
   `label` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `config`
 --
 
 INSERT INTO `config` (`id`, `key`, `value`, `label`) VALUES
-(1, 'nom-site', 'StartPack', 'Nom du site'),
-(2, 'nb-colonne', '2', 'Nombre de colonne');
+(1, 'nom-site', 'Temple Du Go', 'Nom du site'),
+(2, 'nb-colonne', '2', 'Nombre de colonne'),
+(3, 'company', 'Temple Du Go', 'Nom de l''entreprise');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `menu`
+--
+
+CREATE TABLE IF NOT EXISTS `menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(150) NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `parent_menu_id` int(11) DEFAULT NULL,
+  `ordre` int(11) DEFAULT NULL,
+  `actif` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -91,7 +108,6 @@ CREATE TABLE IF NOT EXISTS `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
-  `content` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -99,8 +115,8 @@ CREATE TABLE IF NOT EXISTS `page` (
 -- Contenu de la table `page`
 --
 
-INSERT INTO `page` (`id`, `name`, `slug`, `content`) VALUES
-(1, 'Test', 'page-de-test', 'Content de la page');
+INSERT INTO `page` (`id`, `name`, `slug`) VALUES
+(1, 'Test', 'page-de-test');
 
 -- --------------------------------------------------------
 
@@ -148,10 +164,37 @@ CREATE TABLE IF NOT EXISTS `page_module_content` (
 --
 
 INSERT INTO `page_module_content` (`id`, `libelle`, `valeur`, `page_module`) VALUES
-(1, 'text', 'Content de la page', 1),
-(2, 'text', 'text de test', 2),
+(1, 'text', '<i><b>dezadzad</b></i>', 1),
+(2, 'text', '<i>text de test</i>', 2),
 (3, 'text', 'test ici', 3),
-(5, 'image', 'http://wallpaper.metalship.org/walls/luis-royo34.jpg', 2);
+(5, 'image', 'http://wallpaper.metalship.org/walls/iron-maiden27.jpg', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `partie`
+--
+
+CREATE TABLE IF NOT EXISTS `partie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `typePartie` varchar(20) NOT NULL,
+  `tailleGoban` varchar(20) NOT NULL,
+  `joueurNoir` int(11) NOT NULL,
+  `joueurBlanc` int(11) NOT NULL,
+  `statutPartie` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `joueurNoir` (`joueurNoir`),
+  UNIQUE KEY `joueurBlanc` (`joueurBlanc`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `partie`
+--
+
+INSERT INTO `partie` (`id`, `typePartie`, `tailleGoban`, `joueurNoir`, `joueurBlanc`, `statutPartie`) VALUES
+(1, 'TYPE_TRAINING', '9x9', 1, 2, 'STATUT_STARTED'),
+(2, 'TYPE_TRAINING', '9x9', 2, 1, 'STATUT_STARTED'),
+(3, '', '', 0, 0, 'STATUT_STARTED');
 
 -- --------------------------------------------------------
 
